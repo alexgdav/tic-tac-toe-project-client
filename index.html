@@ -14,6 +14,10 @@
     <body>
       <h2>tic tac toe</h2>
       <hr>
+      <div class="messages">the messages div! always around! may be around somewhere else on screen or
+        be altogether replaced with bootstrap alerts, though!
+        <h4 id="message"></h4>
+      </div>
       <div class="logged-out">the log-in/sign-up div! show me on log-out, hide me on log-in
           <hr>
           <h5>sign in or register a new account</h5>
@@ -47,11 +51,22 @@
           <button>sign out</button>
         </form>
       </div>
-      <div class="logged-in">the gameboard div! show me on log-in, hide me on log-out!
-      </div>
-      <div class="messages">the messages div! always around! may be around somewhere else on screen or
-        be altogether replaced with bootstrap alerts, though!
-        <h4 id="message"></h4>
+      <div class="logged-in container-fluid" style="display: none"> <!--the gameboard div! show me on log-in, hide me on log-out!-->
+        <div class="row">
+              <div class="col box" id="0">0</div>
+              <div class="col box" id="1">1</div>
+              <div class="col box" id="2">2</div>
+        </div>
+        <div class="row">
+              <div class="col box" id="3">3</div>
+              <div class="col box" id="4">4</div>
+              <div class="col box" id="5">5</div>
+        </div>
+        <div class="row">
+              <div class="col box" id="6">6</div>
+              <div class="col box" id="7">7</div>
+              <div class="col box" id="8">8</div>
+        </div>
       </div>
     </body>
 </html>

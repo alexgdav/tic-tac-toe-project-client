@@ -5,12 +5,21 @@ div {
   margin: 5px;
 }
 
-.success {
-  color: blue;
-  padding: 20px;
+.box {
+  align-items: center;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 80px;
+  justify-content: center;
 }
 
 .failure {
   color: orange;
+  padding: 20px;
+}
+
+.success {
+  color: blue;
   padding: 20px;
 }

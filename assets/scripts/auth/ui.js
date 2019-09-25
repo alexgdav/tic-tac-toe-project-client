@@ -7,6 +7,7 @@ const successMessage = function (successText) {
   $('#message').text(successText)
   $('#message').removeClass('failure') // removes fail class to apply success
   $('#message').addClass('success') // adds success styling from index.scss for now
+  // $('#message').delay(3000).text(' ')
   $('form').trigger('reset') // clears the forms after submit
 }
 

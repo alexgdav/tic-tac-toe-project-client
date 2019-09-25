@@ -1,4 +1,3 @@
-# VARIABLE=VALUE sh curl-scripts/auth/sign-up.sh
 
 
 
