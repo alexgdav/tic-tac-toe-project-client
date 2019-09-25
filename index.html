@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>the game, v1</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -13,5 +13,45 @@
     </head>
     <body>
       <h2>tic tac toe</h2>
+      <hr>
+      <div class="logged-out">the log-in/sign-up div! show me on log-out, hide me on log-in
+          <hr>
+          <h5>sign in or register a new account</h5>
+          <form id="sign-in">
+          <input type="email" name="credentials[email]" placeholder="enter email" /><br>
+          <input type="password" name="credentials[password]" placeholder="enter password" /><br>
+          <button>sign in</button>
+          </form>
+          <hr>
+          <form id="sign-up">
+            <input type="email" name="credentials[email]" placeholder="enter email" /><br>
+            <input type="password" name="credentials[password]" placeholder="enter new password" /><br>
+            <input type="password" name="credentials[password_confirmation]" placeholder="confirm password" /><br>
+            <button>sign up</button>
+          </form>
+          <hr>
+
+      </div>
+      <div class="logged-in" style="display: none">the new game, get stats, change password, and sign out div! show me on log-in,
+      hide me on log-out!
+        <hr>
+        <button>my game stats</button>
+        <hr>
+        <form id="change-pw">
+          <input type="password" name="passwords[old]" placeholder="enter current password" /><br>
+          <input type="password" name="passwords[new]" placeholder="enter new password" /><br>
+          <button>change password</button>
+        </form>
+        <hr>
+        <form id="sign-out">
+          <button>sign out</button>
+        </form>
+      </div>
+      <div class="logged-in">the gameboard div! show me on log-in, hide me on log-out!
+      </div>
+      <div class="messages">the messages div! always around! may be around somewhere else on screen or
+        be altogether replaced with bootstrap alerts, though!
+        <h4 id="message"></h4>
+      </div>
     </body>
 </html>
