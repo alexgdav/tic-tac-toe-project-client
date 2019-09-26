@@ -12,11 +12,13 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h2>tic tac toe</h2>
-      <hr>
-      <div class="messages">the messages div! always around! may be around somewhere else on screen or
-        be altogether replaced with bootstrap alerts, though!
-        <h4 id="message"></h4>
+      <div class="messages container-fluid nogutters"><!--the messages div! always around! may be around somewhere else on screen or
+        be altogether replaced with bootstrap alerts, though!-->
+        <h2>tic tac toe</h2>
+        <div class="row">
+          <div class="col atop"><h4 id="message-gm"></h4></div>
+          <div class="col atop"><h4 id="message"></h4></div>
+        </div>
       </div>
       <div class="logged-out">the log-in/sign-up div! show me on log-out, hide me on log-in
           <hr>
@@ -39,7 +41,13 @@
       <div class="logged-in" style="display: none">the new game, get stats, change password, and sign out div! show me on log-in,
       hide me on log-out!
         <hr>
+        <form id="new-game">
+        <button>start new game</button>
+        </form>
+        <hr>
+        <form id="stats">
         <button>my game stats</button>
+        </form>
         <hr>
         <form id="change-pw">
           <input type="password" name="passwords[old]" placeholder="enter current password" /><br>
@@ -51,7 +59,7 @@
           <button>sign out</button>
         </form>
       </div>
-      <div class="logged-in container-fluid" style="display: none"> <!--the gameboard div! show me on log-in, hide me on log-out!-->
+      <div class="game-started container-fluid" style="display: none"> <!--the gameboard div! show me on log-in, hide me on log-out!-->
         <div class="row">
               <div class="col box" id="0">0</div>
               <div class="col box" id="1">1</div>

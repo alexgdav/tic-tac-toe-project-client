@@ -5,6 +5,10 @@ div {
   margin: 5px;
 }
 
+.atop {
+  height: 70px;
+}
+
 .box {
   align-items: center;
   border: 1px solid black;
@@ -16,10 +20,12 @@ div {
 
 .failure {
   color: orange;
+}
+
+.messages {
   padding: 20px;
 }
 
 .success {
   color: blue;
-  padding: 20px;
 }
