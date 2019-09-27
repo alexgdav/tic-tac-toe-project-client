@@ -2,7 +2,7 @@
 
 // require store object so we can save the user and their token
 const store = require('../store.js')
-// const api = require('./api.js')
+const api = require('./api.js')
 const board = require('./board.js')
 
 const successMessageGM = function (successText) {
@@ -56,25 +56,29 @@ const onNewGameFail = function () {
   failMessageGM('unable to start, please try again')
 }
 
-const onMoveSuccess = function (target) {
-  const shouldIMoveHere = $(target).text()
-  if (shouldIMoveHere === '') {
-    $(target).text(board.switchPlayer)
-    onSwitchPlayerSuccess()
-  } else {
-    noMoveHere()
-  }
-  // console.log(store.game)
-  board.updateGameBoard(target)
+const onMoveSuccess = function (response) {
+  console.log('move successfull', response)
 }
 
-const onSwitchPlayerSuccess = function () {
-  const msg = $('#message-bottom-left').text()
-  if (msg === 'x turn') {
-    notifMessageGMProc('o turn')
-  } else {
-    notifMessageGMProc('x turn')
-  }
+// const onSwitchPlayerSuccess = function () {
+//   const msg = $('#message-bottom-left').text()
+//   if (msg === 'x turn') {
+//     notifMessageGMProc('o turn')
+//   } else {
+//     notifMessageGMProc('x turn')
+//   }
+// }
+
+const runTheTests = function () {
+  console.log(store.game)
+  // store.game = resData.game
+  // board.testing(store.game)
+  // board.checkForWin(store.game)
+  // where need to update the store
+  // and then in it
+  // call testing
+  // call the check winner
+  // in that order
 }
 
 const onGetStatsSuccess = function () {
@@ -106,7 +110,11 @@ module.exports = {
   onMoveSuccess,
   successMessageGM,
   failMessageGM,
-  onSwitchPlayerSuccess,
+  notifMessageGMProc,
+  failMessageGMProc,
+  // onSwitchPlayerSuccess,
   onGetStatsSuccess,
-  onGetStatsFail
+  onGetStatsFail,
+  runTheTests,
+  noMoveHere
 }

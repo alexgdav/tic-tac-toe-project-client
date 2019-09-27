@@ -25,7 +25,7 @@ const getStats = function () {
   })
 }
 
-const move = function (id, currMovePlayer) /* then the game status when done see board.js */{
+const move = function (index, currMovePlayer, gameOver) /* then the game status when done see board.js */{
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     headers: {
@@ -35,10 +35,10 @@ const move = function (id, currMovePlayer) /* then the game status when done see
     data: {
       game: {
         cell: {
-          index: id,
+          index: index,
           value: currMovePlayer
         },
-        over: false
+        over: gameOver
       }
     }
   })
