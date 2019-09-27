@@ -4,27 +4,27 @@
 const store = require('../store.js')
 
 const successMessage = function (successText) {
-  $('#message').text(successText)
-  $('#message').removeClass('failure') // removes fail class to apply success
-  $('#message').addClass('success') // adds success styling from index.scss for now
+  $('#message-top-right').text(successText)
+  $('#message-top-right').removeClass('failure') // removes fail class to apply success
+  $('#message-top-right').addClass('success') // adds success styling from index.scss for now
   $('form').trigger('reset') // clears the forms after submit
 }
 
 const failMessage = function (failText) {
-  $('#message').text(failText)
-  $('#message').removeClass('success') // removes success to apply fail
-  $('#message').addClass('failure') // adds fail styling from index.scss for now
+  $('#message-top-right').text(failText)
+  $('#message-top-right').removeClass('success') // removes success to apply fail
+  $('#message-top-right').addClass('failure') // adds fail styling from index.scss for now
 }
 
-const msgDiv = $('#message')
+/* const msgDiv = $('#message')
 function testQueue () {
   msgDiv
     .show()
     .hide(7000)
-}
+} */
 const onSignUpSuccess = function () {
   successMessage('registered! please log in')
-  testQueue()
+  // testQueue()
 }
 
 const onSignInSuccess = function (resData) {
@@ -33,38 +33,38 @@ const onSignInSuccess = function (resData) {
   // console.log('resData is', resData)
   $('.logged-out').hide() // need to hide the sign in div
   $('.logged-in').show() // need to show the sign out div
-  testQueue()
+  // testQueue()
 }
 
 const onSignOutSuccess = function () {
   $('.logged-out').show()
   $('.logged-in').hide()// need to show the sign in div
   successMessage('goodbye! come play again!')
-  testQueue()
+  // testQueue()
 }
 
 const onChangePwSuccess = function () {
   successMessage('your password was changed')
-  testQueue()
+//  testQueue()
 }
 const onSignUpFail = function () {
   failMessage('sorry, please try registering again')
-  testQueue()
+//  testQueue()
 }
 
 const onSignInFail = function () {
   failMessage('sorry, try signing in again')
-  testQueue()
+//  testQueue()
 }
 
 const onSignOutFail = function () {
   failMessage('sign out failed')
-  testQueue()
+//  testQueue()
 }
 
 const onChangePwFail = function () {
   failMessage('password not changed, please try again!')
-  testQueue()
+//  testQueue()
 }
 
 // export all the functions in this file to make usable in other files

@@ -25,16 +25,23 @@ const getStats = function () {
   })
 }
 
-const move = function () {
-  /* TODO: api call to patch the game here
-  return $.ajax ({
-  url: config.apiUrl + PATCH games/:id,  // TODO: figure out how to grab game id
-  headers: {
-  Authorization: 'Token token=' + store.user.token
-  },
-  method: 'UPDATE'
-}) */
-  console.log('finish this API call, Alex!')
+const move = function (id, currMovePlayer) /* then the game status when done see board.js */{
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    method: 'PATCH',
+    data: {
+      game: {
+        cell: {
+          index: id,
+          value: currMovePlayer
+        },
+        over: false
+      }
+    }
+  })
 }
 
 module.exports = {

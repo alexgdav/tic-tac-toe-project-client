@@ -8,6 +8,7 @@ const ui = require('./ui.js')
 const onNewGame = function () {
   event.preventDefault()
   api.newGame()
+  // TODO: either this or onNewGameSuccess needs to clear the stored board state and any messages
     .then(ui.onNewGameSuccess)
     .catch(ui.onNewGameFail)
 }
@@ -15,9 +16,8 @@ const onNewGame = function () {
 const onMove = function (event) {
   // console.log(event.target)
   const clickedDiv = event.target
-  console.log(this)
+  // console.log(this)
   ui.onMoveSuccess(clickedDiv)
-  // api.move()
 }
 
 const onGetStats = function () {

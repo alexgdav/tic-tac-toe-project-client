@@ -6,9 +6,9 @@ const store = require('../store.js')
 const board = require('./board.js')
 
 const successMessageGM = function (successText) {
-  $('#message-gm').text(successText)
-  $('#message-gm').removeClass('failure') // removes fail class to apply success
-  $('#message-gm').addClass('success') // adds success styling from index.scss for now
+  $('#message-top-left').text(successText)
+  $('#message-top-left').removeClass('failure') // removes fail class to apply success
+  $('#message-top-left').addClass('success') // adds success styling from index.scss for now
   $('form').trigger('reset') // clears the forms after submit
 }
 
@@ -19,28 +19,28 @@ const failMessageGM = function (failText) {
 }
 
 const notifMessageGMProc = function (notifText) {
-  $('#message-gm-process').text(notifText)
-  $('#message-gm-process').removeClass('failure') // removes fail class to apply success
-  $('#message-gm-process').addClass('success')
+  $('#message-bottom-left').text(notifText)
+  $('#message-bottom-left').removeClass('failure') // removes fail class to apply success
+  $('#message-bottom-left').addClass('success')
 }
 const failMessageGMProc = function (failText) {
-  $('#message-gm-process').text(failText)
-  $('#message-gm-process').removeClass('success') // removes success to apply fail
-  $('#message-gm-process').addClass('failure')
+  $('#message-bottom-right').text(failText)
+  $('#message-bottom-right').removeClass('success') // removes success to apply fail
+  $('#message-bottom-right').addClass('failure')
 }
 
 const noMoveHere = function () {
-  failMessage('pick another space') // need to give this one its own div
-  testQueue1()
+  failMessageGMProc('pick another space')
+  // testQueue1()
 }
 
-const msgDivGm = $('#message-gm-process')
+/* const msgDivGm1 = $('#message-bottom-left')
 function testQueue1 () {
-  msgDivGm
+  msgDivGm1
     .show()
     .hide(1000)
     .show()
-}
+} */
 
 const onNewGameSuccess = function (resData) {
   // console.log(resData.game)
@@ -56,18 +56,20 @@ const onNewGameFail = function () {
   failMessageGM('unable to start, please try again')
 }
 
-const onMoveSuccess = function () {
-  const shouldIMoveHere = $(event.target).text()
+const onMoveSuccess = function (target) {
+  const shouldIMoveHere = $(target).text()
   if (shouldIMoveHere === '') {
-    $(event.target).text(board.switchPlayer)
+    $(target).text(board.switchPlayer)
     onSwitchPlayerSuccess()
   } else {
     noMoveHere()
   }
+  // console.log(store.game)
+  board.updateGameBoard(target)
 }
 
 const onSwitchPlayerSuccess = function () {
-  const msg = $('#message-gm-process').text()
+  const msg = $('#message-bottom-left').text()
   if (msg === 'x turn') {
     notifMessageGMProc('o turn')
   } else {
@@ -97,7 +99,8 @@ const onGetStatsFail = function () {
 
 module.exports = mod
 window.gameUI = mod */
- module.exports = {
+
+module.exports = {
   onNewGameSuccess,
   onNewGameFail,
   onMoveSuccess,
