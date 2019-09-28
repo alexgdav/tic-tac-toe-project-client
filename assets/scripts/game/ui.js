@@ -3,7 +3,8 @@
 // require store object so we can save the user and their token
 const store = require('../store.js')
 const api = require('./api.js')
-const board = require('./board.js')
+const events = require('./events.js')
+// const board = require('./board.js')
 
 const successMessageGM = function (successText) {
   $('#message-top-left').text(successText)
@@ -48,8 +49,9 @@ const onNewGameSuccess = function (resData) {
   successMessageGM('new game in process')
   notifMessageGMProc('x turn')
   $('.game-started').show()
-  $('.gamespace').empty()
+  $('.gamespace').empty().removeClass('bg-success').removeClass('border-primary')
   // console.log(store.game)
+  // console.log(events.SrisFunction)
 }
 
 const onNewGameFail = function () {
@@ -69,7 +71,7 @@ const onMoveSuccess = function (response) {
 //   }
 // }
 
-const runTheTests = function () {
+/* const runTheTests = function () {
   console.log(store.game)
   // store.game = resData.game
   // board.testing(store.game)
@@ -79,7 +81,7 @@ const runTheTests = function () {
   // call testing
   // call the check winner
   // in that order
-}
+} */
 
 const onGetStatsSuccess = function () {
   console.log(store.user.id)
@@ -115,6 +117,5 @@ module.exports = {
   // onSwitchPlayerSuccess,
   onGetStatsSuccess,
   onGetStatsFail,
-  runTheTests,
   noMoveHere
 }

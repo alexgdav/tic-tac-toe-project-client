@@ -1,5 +1,8 @@
 'use strict'
-
+/* const oldLog = console.log
+console.log = function (string) {
+  oldLog('Sri says', string)
+} */
 // require store object so we can save the user and their token
 const store = require('../store.js')
 

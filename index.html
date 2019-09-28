@@ -26,9 +26,10 @@
           </div>
         </div>
       </div>
-      <div class="logged-out">the log-in/sign-up div! show me on log-out, hide me on log-in
+      <div class="logged-out container-fluid">the log-in/sign-up div! show me on log-out, hide me on log-in
+        <h5>sign in or register a new account</h5>
+        <div class="row">
           <hr>
-          <h5>sign in or register a new account</h5>
           <form id="sign-in">
           <input type="email" name="credentials[email]" placeholder="enter email" /><br>
           <input type="password" name="credentials[password]" placeholder="enter password" /><br>
@@ -42,10 +43,10 @@
             <button>sign up</button>
           </form>
           <hr>
-
+          </div>
       </div>
-      <div class="logged-in" style="display: none">the new game, get stats, change password, and sign out div! show me on log-in,
-      hide me on log-out!
+      <div class="logged-in container-fluid" style="display: none">the new game, get stats, change password, and sign out div! show me on log-in,
+      hide me on log-out!<div class="row">
         <hr>
         <form id="new-game">
         <button>start new game</button>
@@ -65,21 +66,22 @@
           <button>sign out</button>
         </form>
       </div>
+      </div>
       <div class="game-started container-fluid" style="display: none"> <!--the gameboard div! show me on log-in, hide me on log-out!-->
         <div class="row">
-              <div class="col box gamespace" id="0"></div>
-              <div class="col box gamespace" id="1"></div>
-              <div class="col box gamespace" id="2"></div>
+              <div class="col box gamespace rounded" id="0"></div>
+              <div class="col box gamespace rounded" id="1"></div>
+              <div class="col box gamespace rounded" id="2"></div>
         </div>
         <div class="row">
-              <div class="col box gamespace" id="3"></div>
-              <div class="col box gamespace" id="4"></div>
-              <div class="col box gamespace" id="5"></div>
+              <div class="col box gamespace rounded" id="3"></div>
+              <div class="col box gamespace rounded" id="4"></div>
+              <div class="col box gamespace rounded" id="5"></div>
         </div>
         <div class="row">
-              <div class="col box gamespace" id="6"></div>
-              <div class="col box gamespace" id="7"></div>
-              <div class="col box gamespace" id="8"></div>
+              <div class="col box gamespace rounded" id="6"></div>
+              <div class="col box gamespace rounded" id="7"></div>
+              <div class="col box gamespace rounded" id="8"></div>
         </div>
       </div>
     </body>

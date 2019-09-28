@@ -39,19 +39,21 @@ const checkForWin = function () {
   console.log({xWins})
   if (xWins) {
     console.log('X WON')
-    return true
+    ui.notifMessageGMProc(' ')
+    // return true
   } else {
     console.log('no win')
-    return false
+    // return false
   }
-  // const oWins = winStates.forEach(function (winState) {
-  //   winState.every(item => map.o.includes(item))
-  // })
-  // const xoTie = winStates.forEach(winState => {
-  //  winState.every(item => map[""] !== '' && xWins === false && oWins === false)
-  //  console.log()
-  // })
+  // const oWins = winStates.some(winState => winState.every(item => map.o.includes(item)))
+//  console.log({oWins})
+  // console.log('O WON')
+  // ui.notifMessageGMProc(' ')
 }
+// const xoTie = winStates.some(winState => winState.every(item => map[""] !== '' && xWins === false && oWins === false)
+//  console.log()
+// })
+// }
 
 const switchPlayer = function () {
   if (currMovePlayer === xPlayer) {
@@ -70,6 +72,7 @@ const onNewGame = function () {
 }
 
 const onMove = function (event) {
+  ui.failMessageGMProc(' ')
   // console.log(event.target)
   const clickedDiv = event.target
   // console.log(this)
@@ -77,7 +80,7 @@ const onMove = function (event) {
   const shouldIMoveHere = $(clickedDiv).text()
   if (shouldIMoveHere === '') {
     switchPlayer()
-    $(clickedDiv).text(currMovePlayer)
+    $(clickedDiv).text(currMovePlayer).addClass('border-primary').addClass('bg-success')
     const msg = $('#message-bottom-left').text()
     if (msg === 'x turn') {
       ui.notifMessageGMProc('o turn')
@@ -89,6 +92,7 @@ const onMove = function (event) {
     // check for the winner
     const gameOver = checkForWin()
     // update the api
+    // TODO: if gameOver is true, disable further clicks until resetting board
     api.move(clickedDiv.id, currMovePlayer, gameOver)
       .then(ui.onMoveSuccess)// message
       .catch(ui.noMoveHere) // message
@@ -104,9 +108,14 @@ const onGetStats = function () {
     .then(ui.onGetStatsSuccess)
     .catch(ui.onGetStatsFail)
 }
+
+/* function SrisFunction () {
+  console.log('Sri is awesome')
+} */
+
 module.exports = {
   onNewGame,
   onMove,
   onGetStats
-
+  // SrisFunction
 }
