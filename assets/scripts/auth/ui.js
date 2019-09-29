@@ -16,12 +16,13 @@ const failMessage = function (failText) {
   $('#message-top-right').addClass('failure') // adds fail styling from index.scss for now
 }
 
-/* const msgDiv = $('#message')
+/* const msgDiv = $('#message-top-right')
 function testQueue () {
   msgDiv
     .show()
     .hide(7000)
 } */
+
 const onSignUpSuccess = function () {
   successMessage('registered! please log in')
   // testQueue()
@@ -42,34 +43,29 @@ const onSignOutSuccess = function () {
   successMessage('goodbye! come play again!')
   $('.gamespace').empty().removeClass('bg-success').removeClass('border-primary')
   $('.game-started').hide() // hide the gameboard
-  // testQueue()
+  $('#message-top-left').text('')
+  $('#message-bottom-left').text('')
+  $('#message-bottom-right').text('')
 }
 
 const onChangePwSuccess = function () {
   successMessage('your password was changed')
-//  testQueue()
 }
 const onSignUpFail = function () {
   failMessage('sorry, please try registering again')
-//  testQueue()
 }
 
 const onSignInFail = function () {
   failMessage('sorry, try signing in again')
-//  testQueue()
 }
 
 const onSignOutFail = function () {
   failMessage('sign out failed')
-//  testQueue()
 }
 
 const onChangePwFail = function () {
   failMessage('password not changed, please try again!')
-//  testQueue()
 }
-
-// export all the functions in this file to make usable in other files
 
 module.exports = {
   onSignUpSuccess,

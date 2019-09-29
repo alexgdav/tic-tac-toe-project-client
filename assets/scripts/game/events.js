@@ -47,21 +47,27 @@ const checkForWin = function () {
   const xWins = map.x && winStates.some(winState => winState.every(item => map.x.includes(item)))
   const oWins = map.o && winStates.some(winState => winState.every(item => map.o.includes(item)))
   const xoTie = !map[''] && xWins === false && oWins === false
+  let isGameOver
   if (xWins) {
     console.log('X WON')
+    isGameOver = true
     ui.onWin()
     stopClickHandler()
-    // console.log({xWins})
+    console.log({xWins})
   } else if (oWins) {
     console.log('O WON')
+    isGameOver = true
     ui.onLoss()
     stopClickHandler()
-    // console.log({oWins})
+    console.log({oWins})
   } else if (xoTie) {
     console.log('a tie')
+    isGameOver = true
+    console.log({xoTie})
     ui.onTie()
     stopClickHandler()
   }
+  return isGameOver
 }
 
 const switchPlayer = function () {
@@ -103,6 +109,7 @@ const onMove = function (event) {
     store.game.cells[clickedDiv.id] = currMovePlayer
     // check for the winner
     const gameOver = checkForWin()
+    console.log('is game over?', gameOver)
     // update the API
     api.move(clickedDiv.id, currMovePlayer, gameOver)
       .then(ui.onMoveSuccess) // message

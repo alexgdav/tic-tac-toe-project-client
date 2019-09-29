@@ -66,9 +66,17 @@ const onMoveSuccess = function (response) {
   console.log('move successfull', response)
 }
 
-const onGetStatsSuccess = function () {
-  console.log(store.user.id)
-  console.log(store.game)
+const onGetStatsSuccess = function (response) {
+  $('#message-bottom-right').text('you have played ' + response.games.length + ' games')
+  /*  $('#testing-stats').html(' ')
+ response.games.forEach(game => {
+    const gameHTML = (`
+    <h4>Title: ${game.title}</h4>
+    <p>Author: ${game.author}</p>
+    <p>ID: ${game.id}</p>
+    <br>
+     `)
+    $('#testing-stats').append(gameHTML) } */
 }
 
 const onGetStatsFail = function () {
