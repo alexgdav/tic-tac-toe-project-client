@@ -1,5 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 
+body {
+ background-image: linear-gradient(to left, rgba(40,167,69,.1), rgba(40,167,69,.6));
+}
+
 div {
   border: 1px solid black;
   margin: 5px;
@@ -16,6 +20,7 @@ div {
   flex-wrap: nowrap;
   height: 80px;
   justify-content: center;
+  color: white;
 }
 
 .failure {

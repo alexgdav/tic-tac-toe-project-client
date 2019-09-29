@@ -109,7 +109,7 @@ const onMove = function (event) {
     store.game.cells[clickedDiv.id] = currMovePlayer
     // check for the winner
     const gameOver = checkForWin()
-    console.log('is game over?', gameOver)
+    // console.log('is game over?', gameOver)
     // update the API
     api.move(clickedDiv.id, currMovePlayer, gameOver)
       .then(ui.onMoveSuccess) // message
