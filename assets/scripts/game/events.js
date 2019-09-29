@@ -5,10 +5,19 @@
 const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('./../store.js')
+
 const xPlayer = 'x'
 const oPlayer = 'o'
 
 let currMovePlayer
+
+function startClickHandler () {
+  $('#0, #1, #2, #3, #4, #5, #6, #7, #8').on('click', onMove)
+}
+
+function stopClickHandler () {
+  $('#0, #1, #2, #3, #4, #5, #6, #7, #8').off('click', onMove)
+}
 
 const winStates = [
   [0, 1, 2],
@@ -23,7 +32,7 @@ const winStates = [
 
 const checkForWin = function () {
   const map = {}
-  console.log(store.game.cells)
+  // console.log(store.game.cells)
   // looping through the game board and creating map object of x and o cells
   for (let i = 0; i < store.game.cells.length; i++) {
     const element = store.game.cells[i]
@@ -37,36 +46,23 @@ const checkForWin = function () {
   // looping through wins to check if x wins
   const xWins = map.x && winStates.some(winState => winState.every(item => map.x.includes(item)))
   const oWins = map.o && winStates.some(winState => winState.every(item => map.o.includes(item)))
+  const xoTie = !map[''] && xWins === false && oWins === false
   if (xWins) {
     console.log('X WON')
-    console.log({xWins})
-    ui.notifMessageGMProc(' ')
+    ui.onWin()
+    stopClickHandler()
+    // console.log({xWins})
   } else if (oWins) {
     console.log('O WON')
-    console.log({oWins})
-  } else {
-    // TODO: disable further clicks until resetting board
-  // return true
-  /* } else if (oWins) {
-    console.log('O WON')
-    ui.notifMessageGMProc(' ')
-    // return false
+    ui.onLoss()
+    stopClickHandler()
+    // console.log({oWins})
   } else if (xoTie) {
-    console.log('a tie!') */
-    console.log('no win yet')
+    console.log('a tie')
+    ui.onTie()
+    stopClickHandler()
   }
-  // const oWins = winStates.some(winState => winState.every(item => map.o.includes(item)))
-//  console.log({oWins})
-  // console.log('O WON')
-  // ui.notifMessageGMProc(' ')
 }
-/*
-const xoTie = xWins === false && oWins === false && store.game.cells.every(cell => store.game.cells !== '') */
-
-// const xoTie = winStates.some(winState => winState.every(item => map[""] !== '' && xWins === false && oWins === false)
-//  console.log()
-// })
-// }
 
 const switchPlayer = function () {
   if (currMovePlayer === xPlayer) {
@@ -79,6 +75,8 @@ const switchPlayer = function () {
 const onNewGame = function () {
   currMovePlayer = oPlayer
   event.preventDefault()
+  stopClickHandler()
+  startClickHandler()
   api.newGame()
     // TODO: either this or onNewGameSuccess needs to clear the stored board state and any messages
     .then(ui.onNewGameSuccess)

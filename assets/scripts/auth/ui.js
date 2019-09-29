@@ -40,6 +40,8 @@ const onSignOutSuccess = function () {
   $('.logged-out').show()
   $('.logged-in').hide()// need to show the sign in div
   successMessage('goodbye! come play again!')
+  $('.gamespace').empty().removeClass('bg-success').removeClass('border-primary')
+  $('.game-started').hide() // hide the gameboard
   // testQueue()
 }
 

@@ -11,9 +11,9 @@ const successMessageGM = function (successText) {
 }
 
 const failMessageGM = function (failText) {
-  $('#message-gm').text(failText)
-  $('#message-gm').removeClass('success') // removes success to apply fail
-  $('#message-gm').addClass('failure') // adds fail styling from index.scss for now
+  $('#message-top-left').text(failText)
+  $('#message-top-left').removeClass('success') // removes success to apply fail
+  $('#message-top-left').addClass('failure') // adds fail styling from index.scss for now
 }
 
 const notifMessageGMProc = function (notifText) {
@@ -28,21 +28,24 @@ const failMessageGMProc = function (failText) {
 }
 
 const noMoveHere = function () {
+  console.error('argh')
   failMessageGMProc('pick another space')
-  // testQueue1()
 }
 
-const noMoreMoves = function () {
-  console.log('game is over, no more moves')
+const onWin = function () {
+  successMessageGM('you won! nice job!')
+  notifMessageGMProc('')
 }
 
-/* const msgDivGm1 = $('#message-bottom-left')
-function testQueue1 () {
-  msgDivGm1
-    .show()
-    .hide(1000)
-    .show()
-} */
+const onLoss = function () {
+  failMessageGM('you lost. try again!')
+  notifMessageGMProc('')
+}
+
+const onTie = function () {
+  failMessageGM('a tie! try again for a win!')
+  notifMessageGMProc('')
+}
 
 const onNewGameSuccess = function (resData) {
   // console.log(resData.game)
@@ -51,6 +54,7 @@ const onNewGameSuccess = function (resData) {
   notifMessageGMProc('x turn')
   $('.game-started').show()
   $('.gamespace').empty().removeClass('bg-success').removeClass('border-primary')
+  $('#message-bottom-right').text('')
   // console.log(store.game)
 }
 
@@ -82,5 +86,7 @@ module.exports = {
   onGetStatsSuccess,
   onGetStatsFail,
   noMoveHere,
-  noMoreMoves
+  onWin,
+  onLoss,
+  onTie
 }
