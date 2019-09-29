@@ -35,14 +35,15 @@ const checkForWin = function () {
   }
   console.log({map})
   // looping through wins to check if x wins
-  const xWins = winStates.some(winState => winState.every(item => map.x.includes(item)))
-
+  const xWins = map.x && winStates.some(winState => winState.every(item => map.x.includes(item)))
+  const oWins = map.o && winStates.some(winState => winState.every(item => map.o.includes(item)))
   if (xWins) {
     console.log('X WON')
     console.log({xWins})
     ui.notifMessageGMProc(' ')
-  //  } else if (winStates.some(winState => winState.every(item => map.o.includes(item)))) {
-  //  console.log('O WON')
+  } else if (oWins) {
+    console.log('O WON')
+    console.log({oWins})
   } else {
     // TODO: disable further clicks until resetting board
   // return true
