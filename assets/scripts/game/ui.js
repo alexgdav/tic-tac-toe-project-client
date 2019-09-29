@@ -2,9 +2,6 @@
 
 // require store object so we can save the user and their token
 const store = require('../store.js')
-const api = require('./api.js')
-const events = require('./events.js')
-// const board = require('./board.js')
 
 const successMessageGM = function (successText) {
   $('#message-top-left').text(successText)
@@ -35,6 +32,10 @@ const noMoveHere = function () {
   // testQueue1()
 }
 
+const noMoreMoves = function () {
+  console.log('game is over, no more moves')
+}
+
 /* const msgDivGm1 = $('#message-bottom-left')
 function testQueue1 () {
   msgDivGm1
@@ -51,7 +52,6 @@ const onNewGameSuccess = function (resData) {
   $('.game-started').show()
   $('.gamespace').empty().removeClass('bg-success').removeClass('border-primary')
   // console.log(store.game)
-  // console.log(events.SrisFunction)
 }
 
 const onNewGameFail = function () {
@@ -62,27 +62,6 @@ const onMoveSuccess = function (response) {
   console.log('move successfull', response)
 }
 
-// const onSwitchPlayerSuccess = function () {
-//   const msg = $('#message-bottom-left').text()
-//   if (msg === 'x turn') {
-//     notifMessageGMProc('o turn')
-//   } else {
-//     notifMessageGMProc('x turn')
-//   }
-// }
-
-/* const runTheTests = function () {
-  console.log(store.game)
-  // store.game = resData.game
-  // board.testing(store.game)
-  // board.checkForWin(store.game)
-  // where need to update the store
-  // and then in it
-  // call testing
-  // call the check winner
-  // in that order
-} */
-
 const onGetStatsSuccess = function () {
   console.log(store.user.id)
   console.log(store.game)
@@ -92,20 +71,6 @@ const onGetStatsFail = function () {
   console.log('no stats here')
 }
 
-/* const mod = {
-  onNewGameSuccess,
-  onNewGameFail,
-  onMoveSuccess,
-  successMessageGM,
-  failMessageGM,
-  onSwitchPlayerSuccess,
-  onGetStatsSuccess,
-  onGetStatsFail
-}
-
-module.exports = mod
-window.gameUI = mod */
-
 module.exports = {
   onNewGameSuccess,
   onNewGameFail,
@@ -114,8 +79,8 @@ module.exports = {
   failMessageGM,
   notifMessageGMProc,
   failMessageGMProc,
-  // onSwitchPlayerSuccess,
   onGetStatsSuccess,
   onGetStatsFail,
-  noMoveHere
+  noMoveHere,
+  noMoreMoves
 }

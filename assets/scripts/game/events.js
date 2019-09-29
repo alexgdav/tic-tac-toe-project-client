@@ -36,20 +36,32 @@ const checkForWin = function () {
   console.log({map})
   // looping through wins to check if x wins
   const xWins = winStates.some(winState => winState.every(item => map.x.includes(item)))
-  console.log({xWins})
+
   if (xWins) {
     console.log('X WON')
+    console.log({xWins})
     ui.notifMessageGMProc(' ')
-    // return true
+  //  } else if (winStates.some(winState => winState.every(item => map.o.includes(item)))) {
+  //  console.log('O WON')
   } else {
-    console.log('no win')
+    // TODO: disable further clicks until resetting board
+  // return true
+  /* } else if (oWins) {
+    console.log('O WON')
+    ui.notifMessageGMProc(' ')
     // return false
+  } else if (xoTie) {
+    console.log('a tie!') */
+    console.log('no win yet')
   }
   // const oWins = winStates.some(winState => winState.every(item => map.o.includes(item)))
 //  console.log({oWins})
   // console.log('O WON')
   // ui.notifMessageGMProc(' ')
 }
+/*
+const xoTie = xWins === false && oWins === false && store.game.cells.every(cell => store.game.cells !== '') */
+
 // const xoTie = winStates.some(winState => winState.every(item => map[""] !== '' && xWins === false && oWins === false)
 //  console.log()
 // })
@@ -64,6 +76,7 @@ const switchPlayer = function () {
 }
 
 const onNewGame = function () {
+  currMovePlayer = oPlayer
   event.preventDefault()
   api.newGame()
     // TODO: either this or onNewGameSuccess needs to clear the stored board state and any messages
@@ -91,10 +104,9 @@ const onMove = function (event) {
     store.game.cells[clickedDiv.id] = currMovePlayer
     // check for the winner
     const gameOver = checkForWin()
-    // update the api
-    // TODO: if gameOver is true, disable further clicks until resetting board
+    // update the API
     api.move(clickedDiv.id, currMovePlayer, gameOver)
-      .then(ui.onMoveSuccess)// message
+      .then(ui.onMoveSuccess) // message
       .catch(ui.noMoveHere) // message
   } else {
     ui.noMoveHere()
@@ -109,13 +121,8 @@ const onGetStats = function () {
     .catch(ui.onGetStatsFail)
 }
 
-/* function SrisFunction () {
-  console.log('Sri is awesome')
-} */
-
 module.exports = {
   onNewGame,
   onMove,
   onGetStats
-  // SrisFunction
 }
