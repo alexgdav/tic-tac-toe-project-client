@@ -19,15 +19,20 @@ div {
   color: white;
   display: flex;
   flex-wrap: nowrap;
-  height: 80px;
+  height: 105px;
   justify-content: center;
 }
 
 .game-opts {
   border: 0;
+  padding: 15px;
   overflow-x: hidden;
 }
 
+.game-started {
+  padding-top: 10px;
+
+}
 .failure {
   color: #f28500;
 }

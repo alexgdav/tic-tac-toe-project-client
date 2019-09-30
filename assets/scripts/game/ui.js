@@ -2,32 +2,37 @@
 
 const store = require('../store.js')
 
+const niceMoves = ['not bad!', 'i would not have picked that space', 'a great move!', 'okay, sure!', 'the most okayest move!', 'pretty good move!', 'good choice!', 'good move!', 'are you sure?', 'not a bad choice!']
+const niceMove = function () {
+  return niceMoves[Math.floor(Math.random() * niceMoves.length)]
+}
+
 const successMessageGM = function (successText) {
   $('#message-top-left').text(successText)
-  $('#message-top-left').removeClass('failure') // removes fail class to apply success
-  $('#message-top-left').addClass('success') // adds success styling from index.scss for now
-  $('form').trigger('reset') // clears the forms after submit
+  $('#message-top-left').removeClass('failure')
+  $('#message-top-left').addClass('success')
+  $('form').trigger('reset')
 }
 
 const failMessageGM = function (failText) {
   $('#message-top-left').text(failText)
-  $('#message-top-left').removeClass('success') // removes success to apply fail
-  $('#message-top-left').addClass('failure') // adds fail styling from index.scss for now
+  $('#message-top-left').removeClass('success')
+  $('#message-top-left').addClass('failure')
 }
 
 const notifMessageGMProc = function (notifText) {
   $('#message-bottom-left').text(notifText)
-  $('#message-bottom-left').removeClass('failure') // removes fail class to apply success
+  $('#message-bottom-left').removeClass('failure')
   $('#message-bottom-left').addClass('success')
 }
 const failMessageGMProc = function (failText) {
   $('#message-bottom-right').text(failText)
-  $('#message-bottom-right').removeClass('success') // removes success to apply fail
+  $('#message-bottom-right').removeClass('success')
   $('#message-bottom-right').addClass('failure')
 }
 
 const noMoveHere = function () {
-  failMessageGMProc('pick another space')
+  failMessageGMProc('invalid move. pick another space')
 }
 
 const onWin = function () {
@@ -49,7 +54,6 @@ const onTie = function () {
 }
 
 const onNewGameSuccess = function (resData) {
-  // console.log(resData.game)
   store.game = resData.game
   successMessageGM('new game in process')
   notifMessageGMProc('x turn')
@@ -57,7 +61,6 @@ const onNewGameSuccess = function (resData) {
   $('.gamespace').empty().removeClass('bg-success').removeClass('border-primary')
   $('#message-bottom-right').text('')
   $('.box').addClass('hover')
-  // console.log(store.game)
 }
 
 const onNewGameFail = function () {
@@ -65,7 +68,7 @@ const onNewGameFail = function () {
 }
 
 const onMoveSuccess = function (response) {
-  console.log('move successfull', response)
+  $('#message-bottom-right').text(niceMove())
 }
 
 const onGetStatsSuccess = function (response) {
@@ -73,7 +76,7 @@ const onGetStatsSuccess = function (response) {
 }
 
 const onGetStatsFail = function () {
-  console.log('no stats here')
+  $('#message-bottom-right').text('could not find your stats, sorry!')
 }
 
 module.exports = {

@@ -38,7 +38,7 @@ const checkForWin = function () {
       map[element].push(i)
     }
   }
-  console.log({map})
+
   const xWins = map.x && winStates.some(winState => winState.every(item => map.x.includes(item)))
   const oWins = map.o && winStates.some(winState => winState.every(item => map.o.includes(item)))
   const xoTie = !map[''] && xWins === false && oWins === false

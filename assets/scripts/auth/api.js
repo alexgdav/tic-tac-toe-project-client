@@ -1,7 +1,7 @@
 'use strict'
-// require config to use config.apiUrl
+
 const config = require('../config.js')
-// require store so we have access to token when we need it later
+
 const store = require('../store.js')
 
 const signUp = function (formData) {
@@ -40,7 +40,6 @@ const changePw = function (formData) {
     data: formData
   })
 }
-// export all the functions in this file to make them available to other files
 
 module.exports = {
   signUp,

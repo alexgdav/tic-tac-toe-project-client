@@ -15,13 +15,6 @@ const failMessage = function (failText) {
   $('#message-top-right').addClass('failure')
 }
 
-const msgDiv = $('#message-top-right')
-function testQueue () {
-  msgDiv
-    .show()
-    .hide(8000)
-}
-
 const onSignUpSuccess = function () {
   successMessage('registered! please log in')
 }
@@ -31,7 +24,6 @@ const onSignInSuccess = function (resData) {
   $('.logged-out').hide()
   $('.logged-in').show()
   successMessage('hello, ' + store.user.email)
-  testQueue()
 }
 
 const onSignOutSuccess = function () {
