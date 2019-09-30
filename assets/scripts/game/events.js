@@ -1,7 +1,5 @@
 'use strict'
 
-// const getFormFields = require('../../../lib/get-form-fields.js')
-
 const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('./../store.js')
@@ -32,8 +30,6 @@ const winStates = [
 
 const checkForWin = function () {
   const map = {}
-  // console.log(store.game.cells)
-  // looping through the game board and creating map object of x and o cells
   for (let i = 0; i < store.game.cells.length; i++) {
     const element = store.game.cells[i]
     if (!map[element]) {
@@ -43,27 +39,20 @@ const checkForWin = function () {
     }
   }
   console.log({map})
-  // looping through wins to check if x wins
   const xWins = map.x && winStates.some(winState => winState.every(item => map.x.includes(item)))
   const oWins = map.o && winStates.some(winState => winState.every(item => map.o.includes(item)))
   const xoTie = !map[''] && xWins === false && oWins === false
   let isGameOver
   if (xWins) {
-    console.log('X WON')
     isGameOver = true
     ui.onWin()
     stopClickHandler()
-    console.log({xWins})
   } else if (oWins) {
-    console.log('O WON')
     isGameOver = true
     ui.onLoss()
     stopClickHandler()
-    console.log({oWins})
   } else if (xoTie) {
-    console.log('a tie')
     isGameOver = true
-    console.log({xoTie})
     ui.onTie()
     stopClickHandler()
   }
@@ -84,17 +73,13 @@ const onNewGame = function () {
   stopClickHandler()
   startClickHandler()
   api.newGame()
-    // TODO: either this or onNewGameSuccess needs to clear the stored board state and any messages
     .then(ui.onNewGameSuccess)
     .catch(ui.onNewGameFail)
 }
 
 const onMove = function (event) {
   ui.failMessageGMProc(' ')
-  // console.log(event.target)
   const clickedDiv = event.target
-  // console.log(this)
-  // ui.onMoveSuccess(clickedDiv)
   const shouldIMoveHere = $(clickedDiv).text()
   if (shouldIMoveHere === '') {
     switchPlayer()
@@ -105,19 +90,14 @@ const onMove = function (event) {
     } else {
       ui.notifMessageGMProc('x turn')
     }
-    // add the current player to gameboard
     store.game.cells[clickedDiv.id] = currMovePlayer
-    // check for the winner
     const gameOver = checkForWin()
-    // console.log('is game over?', gameOver)
-    // update the API
     api.move(clickedDiv.id, currMovePlayer, gameOver)
-      .then(ui.onMoveSuccess) // message
-      .catch(ui.noMoveHere) // message
+      .then(ui.onMoveSuccess)
+      .catch(ui.noMoveHere)
   } else {
     ui.noMoveHere()
   }
-  // console.log(store.game)
 }
 
 const onGetStats = function () {

@@ -1,6 +1,5 @@
 'use strict'
 
-// require store object so we can save the user and their token
 const store = require('../store.js')
 
 const successMessageGM = function (successText) {
@@ -28,7 +27,6 @@ const failMessageGMProc = function (failText) {
 }
 
 const noMoveHere = function () {
-  console.error('argh')
   failMessageGMProc('pick another space')
 }
 
@@ -72,15 +70,6 @@ const onMoveSuccess = function (response) {
 
 const onGetStatsSuccess = function (response) {
   $('#message-bottom-right').text('you have played ' + response.games.length + ' games')
-  /*  $('#testing-stats').html(' ')
- response.games.forEach(game => {
-    const gameHTML = (`
-    <h4>Title: ${game.title}</h4>
-    <p>Author: ${game.author}</p>
-    <p>ID: ${game.id}</p>
-    <br>
-     `)
-    $('#testing-stats').append(gameHTML) } */
 }
 
 const onGetStatsFail = function () {

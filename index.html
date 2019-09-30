@@ -14,59 +14,65 @@
     <body>
       <div class="messages container-fluid">
         <h2>tic tac toe</h2>
-        <div class="row">
-          <div class="col atop">
+        <div class="row rounded">
+          <div class="col atop rounded">
             <h4 id="message-top-left"></h4>
             <h5 id="message-bottom-left"></h5>
           </div>
-          <div class="col atop">
+          <div class="col atop rounded">
             <h4 id="message-top-right"></h4>
             <h5 id="message-bottom-right"></h5>
           </div>
         </div>
       </div>
-      <div class="logged-out container-fluid">
+      <div class="logged-out container-fluid rounded">
         <h5>sign in or register a new account</h5>
         <div class="row">
           <hr>
           <form id="sign-in">
           <input type="email" name="credentials[email]" placeholder="enter email" /><br>
           <input type="password" name="credentials[password]" placeholder="enter password" /><br>
-          <button>sign in</button>
+          <button class="btn btn-success">sign in</button>
           </form>
           <hr>
           <form id="sign-up">
             <input type="email" name="credentials[email]" placeholder="enter email" /><br>
             <input type="password" name="credentials[password]" placeholder="enter new password" /><br>
             <input type="password" name="credentials[password_confirmation]" placeholder="confirm password" /><br>
-            <button>sign up</button>
+            <button class="btn btn-success">sign up</button>
           </form>
           <hr>
           </div>
       </div>
-      <div class="logged-in container-fluid" style="display: none">
+      <div class="game-opts logged-in container-fluid w-75" style="display: none">
       <div class="row">
-        <hr>
-        <form id="new-game">
-        <button>start new game</button>
-        </form>
-        <hr>
-        <form id="stats">
-        <button>my game stats</button>
-        </form>
-        <hr>
-        <form id="change-pw">
-          <input type="password" name="passwords[old]" placeholder="enter current password" /><br>
-          <input type="password" name="passwords[new]" placeholder="enter new password" /><br>
-          <button>change password</button>
-        </form>
-        <hr>
-        <form id="sign-out">
-          <button>sign out</button>
+      <div class="logged-in container-fluid rounded w-25" style="display: none">
+      <div class="row">
+        <div class="game-opts">
+          <form id="new-game">
+          <button class="btn btn-success">start new game</button>
+          </form>
+        </div>
+        <div class="game-opts">
+          <form id="stats">
+          <button class="btn btn-success">my game stats</button>
+          </form>
+        </div>
+        <div class="game-opts">
+          <form id="change-pw">
+            <button class="btn btn-success">change password</button><br>
+            <input type="password" name="passwords[old]" placeholder="enter current password" /><br>
+            <input type="password" name="passwords[new]" placeholder="enter new password" /><br>
+          </form>
+      </div>
+      <div class="game-opts">
+          <form id="sign-out">
+          <button class="btn btn-success">sign out</button>
         </form>
       </div>
       </div>
-      <div class="game-started container-fluid w-50" style="display: none"> <!--the gameboard div! show me on log-in, hide me on log-out!-->
+      </div>
+      <div class="game-started container-fluid rounded w-75" style="display: none">
         <div class="row">
               <div class="col box gamespace rounded" id="0"></div>
               <div class="col box gamespace rounded" id="1"></div>
@@ -83,5 +89,7 @@
               <div class="col box gamespace rounded" id="8"></div>
         </div>
       </div>
+    </div>
+    </div>
     </body>
 </html>

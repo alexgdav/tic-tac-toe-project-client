@@ -15,7 +15,7 @@ div {
 
 .box {
   align-items: center;
-  border: 1px solid black;
+  border: 1px solid #000000;
   color: white;
   display: flex;
   flex-wrap: nowrap;
@@ -23,22 +23,29 @@ div {
   justify-content: center;
 }
 
+.game-opts {
+  border: 0;
+  overflow-x: hidden;
+}
+
 .failure {
-  color: #F28500;
+  color: #f28500;
 }
 
 .hover:hover {
   background-color: #ffcc00;
+  border-color: blue;
 }
 
 .messages {
+  border: 0;
   padding: 20px;
 }
 
-.processmsg {
-  color: purple;
+.row {
+  border: 0;
 }
 
 .success {
-  color: navy;
+  color: #000080;
 }

@@ -1,48 +1,45 @@
 'use strict'
 
-// require store object so we can save the user and their token
 const store = require('../store.js')
 
 const successMessage = function (successText) {
   $('#message-top-right').text(successText)
-  $('#message-top-right').removeClass('failure') // removes fail class to apply success
-  $('#message-top-right').addClass('success') // adds success styling from index.scss for now
-  $('form').trigger('reset') // clears the forms after submit
+  $('#message-top-right').removeClass('failure')
+  $('#message-top-right').addClass('success')
+  $('form').trigger('reset')
 }
 
 const failMessage = function (failText) {
   $('#message-top-right').text(failText)
-  $('#message-top-right').removeClass('success') // removes success to apply fail
-  $('#message-top-right').addClass('failure') // adds fail styling from index.scss for now
+  $('#message-top-right').removeClass('success')
+  $('#message-top-right').addClass('failure')
 }
 
-/* const msgDiv = $('#message-top-right')
+const msgDiv = $('#message-top-right')
 function testQueue () {
   msgDiv
     .show()
-    .hide(7000)
-} */
+    .hide(8000)
+}
 
 const onSignUpSuccess = function () {
   successMessage('registered! please log in')
-  // testQueue()
 }
 
 const onSignInSuccess = function (resData) {
-  successMessage(`hello! let's play tic tac toe!`)
   store.user = resData.user
-  // console.log('resData is', resData)
-  $('.logged-out').hide() // need to hide the sign in div
-  $('.logged-in').show() // need to show the sign out div
-  // testQueue()
+  $('.logged-out').hide()
+  $('.logged-in').show()
+  successMessage('hello, ' + store.user.email)
+  testQueue()
 }
 
 const onSignOutSuccess = function () {
   $('.logged-out').show()
-  $('.logged-in').hide()// need to show the sign in div
+  $('.logged-in').hide()
   successMessage('goodbye! come play again!')
   $('.gamespace').empty().removeClass('bg-success').removeClass('border-primary')
-  $('.game-started').hide() // hide the gameboard
+  $('.game-started').hide()
   $('#message-top-left').text('')
   $('#message-bottom-left').text('')
   $('#message-bottom-right').text('')
@@ -51,6 +48,7 @@ const onSignOutSuccess = function () {
 const onChangePwSuccess = function () {
   successMessage('your password was changed')
 }
+
 const onSignUpFail = function () {
   failMessage('sorry, please try registering again')
 }

@@ -1,9 +1,8 @@
 'use strict'
-// require config to use config.apiUrl
+
 const config = require('../config.js')
-// require store so we have access to token when we need it later
+
 const store = require('../store.js')
-// const ui = require('./ui.js')
 
 const newGame = function () {
   return $.ajax({
@@ -25,7 +24,7 @@ const getStats = function () {
   })
 }
 
-const move = function (index, currMovePlayer, gameOver) /* then the game status when done see board.js */{
+const move = function (index, currMovePlayer, gameOver) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     headers: {

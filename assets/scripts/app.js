@@ -15,14 +15,5 @@ $(() => {
   $('#sign-out').on('submit', authEvents.onSignOut)
   $('#change-pw').on('submit', authEvents.onChangePw)
   $('#new-game').on('submit', gameEvents.onNewGame)
-  // $('#0, #1, #2, #3, #4, #5, #6, #7, #8').on('click', gameEvents.onMove)
-  // .one('click') allows for only one click in each element, but no error
-  // message after extra clicks because they don't register as clicks
-  // would need to change to "once endgame condition has been met, no more clicks"
-  // $('#0, #1, #2, #3, #4, #5, #6, #7, #8').one('click', gameEvents.onMove)
   $('#stats').on('submit', gameEvents.onGetStats)
 })
-
-/* function startClickHandler () {
-  $('#0, #1, #2, #3, #4, #5, #6, #7, #8').on('click', gameEvents.onMove)
-} */
