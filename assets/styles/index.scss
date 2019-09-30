@@ -1,7 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 body {
- background-image: linear-gradient(to left, rgba(40,167,69,.1), rgba(40,167,69,.6));
+  background-image: linear-gradient(to left, rgba(40,167,69,.1), rgba(40,167,69,.5));
 }
 
 div {
@@ -16,15 +16,19 @@ div {
 .box {
   align-items: center;
   border: 1px solid black;
+  color: white;
   display: flex;
   flex-wrap: nowrap;
   height: 80px;
   justify-content: center;
-  color: white;
 }
 
 .failure {
-  color: orange;
+  color: #F28500;
+}
+
+.hover:hover {
+  background-color: #ffcc00;
 }
 
 .messages {
@@ -34,6 +38,7 @@ div {
 .processmsg {
   color: purple;
 }
+
 .success {
   color: navy;
 }

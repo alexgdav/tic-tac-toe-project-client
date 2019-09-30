@@ -35,16 +35,19 @@ const noMoveHere = function () {
 const onWin = function () {
   successMessageGM('you won! nice job!')
   notifMessageGMProc('')
+  $('.box').removeClass('hover')
 }
 
 const onLoss = function () {
   failMessageGM('you lost. try again!')
   notifMessageGMProc('')
+  $('.box').removeClass('hover')
 }
 
 const onTie = function () {
   failMessageGM('a tie! try again for a win!')
   notifMessageGMProc('')
+  $('.box').removeClass('hover')
 }
 
 const onNewGameSuccess = function (resData) {
@@ -55,6 +58,7 @@ const onNewGameSuccess = function (resData) {
   $('.game-started').show()
   $('.gamespace').empty().removeClass('bg-success').removeClass('border-primary')
   $('#message-bottom-right').text('')
+  $('.box').addClass('hover')
   // console.log(store.game)
 }
 
