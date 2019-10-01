@@ -50,7 +50,6 @@ something, or wanted to add something to it later. For example, the "start new
 game" function needed to also clear the board of the previous game; I left a
 TO DO comment in the working create game function with that instruction and then
 searched the entire project for these whenever I started work again
-
 (a note: I've deleted all my comments and notes from the working code on the master
 branch. Please look at the development branch or the 71a8193 branch for comment examples)
 
@@ -82,5 +81,7 @@ branch. Please look at the development branch or the 71a8193 branch for comment 
 
 
 ### Acknowledgements and Credits
+
+The API backend was provided by GA.
 
 Everyone in SEI-05 who has helped debug or let me bounce some ideas off you: thank you! An additional huge thanks to all the GA instructors for the individual support, the issues queue, and encouraging us through the process
