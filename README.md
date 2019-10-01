@@ -43,10 +43,17 @@ Sign-up and sign-in are required to play (I would recommend that you use a place
    any calculations being made in between, what was held in which
    variables at what point
 
+-  Commenting all the code I wasn't sure about, or code that could be repurposed,
+sometimes with something simple like "this sets the current user", other times
+something more detailed. I also left myself TO DO notes, if I half-finished
+something, or wanted to add something to it later. For example, the "start new
+game" function needed to also clear the board of the previous game; I left a
+TO DO comment in the working create game function with that instruction
+
  - Figuring out the exact deploy order of asynchronous actions was a
    challenge, and this one needed a lot of refactoring of code to
    combine multiple functions into larger ones
-   
+
 - I expected the API calls to be challenging, and writing out the cURL scripts first really helped me see what to expect -- and what I would need to do with the returned information (if any)
 
 
