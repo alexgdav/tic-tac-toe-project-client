@@ -32,7 +32,7 @@ const failMessageGMProc = function (failText) {
 }
 
 const noMoveHere = function () {
-  failMessageGMProc('invalid move. pick another space')
+  failMessageGMProc('INVALID MOVE. PICK ANOTHER SPACE!')
 }
 
 const onWin = function () {

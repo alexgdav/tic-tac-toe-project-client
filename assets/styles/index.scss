@@ -1,7 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 body {
   background-image: linear-gradient(to left, rgba(40,167,69,.1), rgba(40,167,69,.5));
+  font-family: Lato, Helvetica, sans-serif;
 }
 
 div {
@@ -19,14 +21,16 @@ div {
   color: white;
   display: flex;
   flex-wrap: nowrap;
+  font-size: 24px;
   height: 105px;
   justify-content: center;
+
 }
 
 .game-opts {
   border: 0;
-  padding: 15px;
   overflow-x: hidden;
+  padding: 15px;
 }
 
 .game-started {
