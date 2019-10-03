@@ -13,6 +13,7 @@ const failMessage = function (failText) {
   $('#message-top-right').text(failText)
   $('#message-top-right').removeClass('success')
   $('#message-top-right').addClass('failure')
+  $('form').trigger('reset') // TODO: need to add this -- on change pw fail form didn't clear
 }
 
 const onSignUpSuccess = function () {
