@@ -18,6 +18,7 @@ const failMessageGM = function (failText) {
   $('#message-top-left').text(failText)
   $('#message-top-left').removeClass('success')
   $('#message-top-left').addClass('failure')
+  $('form').trigger('reset')
 }
 
 const notifMessageGMProc = function (notifText) {
