@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>the game, v1</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <div class="messages container-fluid">
+        <h2>tic tac toe</h2>
+        <div class="row rounded">
+          <div class="col atop rounded">
+            <h4 id="message-top-left"></h4>
+            <h5 id="message-bottom-left"></h5>
+          </div>
+          <div class="col atop rounded">
+            <h4 id="message-top-right"></h4>
+            <h5 id="message-bottom-right"></h5>
+          </div>
+        </div>
+      </div>
+      <div class="logged-out container-fluid rounded w-50">
+        <h5>sign in or register a new account</h5>
+        <div class="row">
+          <hr>
+          <form id="sign-in">
+          <input type="email" name="credentials[email]" placeholder="enter email" /><br>
+          <input type="password" name="credentials[password]" placeholder="enter password" /><br>
+          <button class="btn btn-success">sign in</button>
+          </form>
+          <hr>
+          <form id="sign-up">
+            <input type="email" name="credentials[email]" placeholder="enter email" /><br>
+            <input type="password" name="credentials[password]" placeholder="enter new password" /><br>
+            <input type="password" name="credentials[password_confirmation]" placeholder="confirm password" /><br>
+            <button class="btn btn-success">sign up</button>
+          </form>
+          <hr>
+          </div>
+      </div>
+      <div class="game-opts logged-in container-fluid w-75" style="display: none">
+      <div class="row">
+      <div class="logged-in container-fluid rounded w-25" style="display: none">
+      <div class="row">
+        <div class="game-opts">
+          <form id="new-game">
+          <button class="btn btn-success">start new game</button>
+          </form>
+        </div>
+        <div class="game-opts">
+          <form id="stats">
+          <button class="btn btn-success">my game stats</button>
+          </form>
+        </div>
+        <div class="game-opts">
+          <form id="change-pw">
+            <input type="password" name="passwords[old]" placeholder="enter current password" /><br>
+            <input type="password" name="passwords[new]" placeholder="enter new password" /><br>
+            <button class="btn btn-success">change password</button><br>
+          </form>
+      </div>
+      <div class="game-opts">
+          <form id="sign-out">
+          <button class="btn btn-success">sign out</button>
+        </form>
+      </div>
+      </div>
+      </div>
+      <div class="game-started container-fluid rounded w-50" style="display: none">
+            <div class="row">
+              <div class="col box gamespace rounded" id="0"></div>
+              <div class="col box gamespace rounded" id="1"></div>
+              <div class="col box gamespace rounded" id="2"></div>
+            </div>
+
+            <div class="row">
+              <div class="col box gamespace rounded" id="3"></div>
+              <div class="col box gamespace rounded" id="4"></div>
+              <div class="col box gamespace rounded" id="5"></div>
+            </div>
+            <div class="row">
+              <div class="col box gamespace rounded" id="6"></div>
+              <div class="col box gamespace rounded" id="7"></div>
+              <div class="col box gamespace rounded" id="8"></div>
+            </div>
+      </div>
+    </div>
+    </div>
+    </body>
+</html>
